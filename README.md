@@ -30,5 +30,7 @@ Users can browse menus, filter dishes, add items to the cart, and experience a r
 - Responsive UI design with TailwindCSS  
 - Deployment on Netlify  
 
+---
+
 Made with ❤️ by **Ahsanul Mostakin**  
 🎉 Happy Coding!
