@@ -4,16 +4,20 @@ import { FaSearch } from "react-icons/fa";
 import { LuShoppingBag } from "react-icons/lu";
 function Nav() {
   return (
-    <div className="w-full h-[100px]">
-      <div className="w-[60px] h-[60px] bg-white flex justify-center items-center">
-        <MdFastfood />
+    <div className="w-full h-[100px] flex justify-between items-center px-8">
+      <div className="w-[60px] h-[60px] bg-white flex justify-center items-center rounded-md shadow-xl">
+        <MdFastfood className="w-[30px] h-[30px] text-green-500" />
       </div>
-      <form action="">
-        <FaSearch />
-        <input type="text" placeholder="Search Items..." />
+      <form className="w-[60%] h-[60px] bg-white flex items-center px-5 gap-5 rounded-md shadow-xl ">
+        <FaSearch className="text-green-500 w-[20px] h-[20px] " />
+        <input
+          className="bg-white w-[100%] outline-none text-[20px]"
+          type="text"
+          placeholder="Search Items..."
+        />
       </form>
-      <div className="w-[60px] h-[60px] bg-white flex justify-center items-center">
-        <LuShoppingBag />
+      <div className="w-[60px] h-[60px] bg-white flex justify-center items-center rounded-md shadow-xl">
+        <LuShoppingBag className="w-[30px] h-[30px] text-green-500 " />
       </div>
     </div>
   );
