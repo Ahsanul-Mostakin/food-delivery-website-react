@@ -1,26 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdFastfood } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { LuShoppingBag } from "react-icons/lu";
+import { dataContext } from "../context/UserContext";
+
 function Nav() {
+  let { input, setInput } = useContext(dataContext);
   return (
     <div className="w-full h-[100px] flex justify-between items-center px-5 md:px-8">
       <div className="w-[60px] h-[60px] bg-white flex justify-center items-center rounded-md shadow-md">
         <MdFastfood className="w-[30px] h-[30px] text-green-500" />
       </div>
-      <form className="w-[45%] h-[60px] bg-white flex items-center px-5 gap-5 rounded-md shadow-xl md:w[70%]">
-        <FaSearch className="text-green-500 w-[20px] h-[20px] " />
+      <form
+        className="w-[45%] h-[60px] bg-white flex items-center px-5 gap-5 rounded-md shadow-xl md:w-[70%]"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <FaSearch className="text-green-500 w-[20px] h-[20px]" />
         <input
           className="bg-white w-[100%] outline-none text-[16px] md:text-[20px]"
           type="text"
           placeholder="Search Items..."
+          onChange={(e) => setInput(e.target.value)}
+          value={input}
         />
       </form>
       <div className="w-[60px] h-[60px] bg-white flex justify-center items-center rounded-md shadow-xl relative">
         <span className="absolute top-0 right-2 text-green-500 font-bold text-[18px]">
           0
         </span>
-        <LuShoppingBag className="w-[30px] h-[30px] text-green-500 " />
+        <LuShoppingBag className="w-[30px] h-[30px] text-green-500" />
       </div>
     </div>
   );
