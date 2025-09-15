@@ -1,11 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { MdFastfood } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { LuShoppingBag } from "react-icons/lu";
 import { dataContext } from "../context/UserContext";
+import { food_items } from "../food";
 
 function Nav() {
-  let { input, setInput } = useContext(dataContext);
+  let { input, setInput, setCate } = useContext(dataContext);
+
+  useEffect(() => {
+    let newlist = food_items.filter((item) =>
+      item.food_name.toLowerCase().includes(input.toLowerCase())
+    );
+    setCate(newlist);
+  }, [input, setCate]);
+
   return (
     <div className="w-full h-[100px] flex justify-between items-center px-5 md:px-8">
       <div className="w-[60px] h-[60px] bg-white flex justify-center items-center rounded-md shadow-md">
