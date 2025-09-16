@@ -4,6 +4,7 @@ import Categories from "../category";
 import Card from "../components/Card";
 import { food_items } from "../food";
 import { dataContext } from "../context/UserContext";
+import { ImCross } from "react-icons/im";
 
 const Home = () => {
   let { input, cate, setCate } = useContext(dataContext);
@@ -61,6 +62,16 @@ const Home = () => {
             type={item.food_type}
           />
         ))}
+      </div>
+
+      {/* ✅ Put header inside the side panel */}
+      <div className="w-[40vw] h-full fixed top-0 right-0 bg-white shadow-xl p-6">
+        <header className="w-full flex justify-between items-center">
+          <span className="text-green-400 text-[18px] font-semibold">
+            Order items
+          </span>
+          <ImCross className="w-[20px] cursor-pointer text-green-400 text-[18px] font-semibold" />
+        </header>
       </div>
     </div>
   );
