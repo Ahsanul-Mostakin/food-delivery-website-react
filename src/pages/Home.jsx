@@ -7,7 +7,7 @@ import { dataContext } from "../context/UserContext";
 import { ImCross } from "react-icons/im";
 
 const Home = () => {
-  let { input, cate, setCate } = useContext(dataContext);
+  let { input, cate, setCate, showCart, setShowCart } = useContext(dataContext);
 
   // Update cate based on search input
   useEffect(() => {
@@ -42,7 +42,7 @@ const Home = () => {
             <div
               key={item.id}
               onClick={() => filter(item.name)}
-              className="w-[140px] h-[150px] bg-white flex flex-col items-start gap-5 p-5 justify-start text-[20px] font-semibold text-gray-600 rounded-lg shadow-x hover:bg-green-200 cursor-pointer transition-all duration-200"
+              className="w-[140px] h-[150px] bg-white flex flex-col items-start gap-5 p-5 justify-start text-[20px] font-semibold text-gray-600 rounded-lg shadow-xl hover:bg-green-200 cursor-pointer transition-all duration-200"
             >
               {item.icon}
               {item.name}
@@ -64,13 +64,19 @@ const Home = () => {
         ))}
       </div>
 
-      {/* ✅ Put header inside the side panel */}
-      <div className="w-[40vw] h-full fixed top-0 right-0 bg-white shadow-xl p-6">
+      <div
+        className={`w-[40vw] h-full fixed top-0 right-0 bg-white shadow-xl p-6 transition-all duration-500 ${
+          showCart ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
         <header className="w-full flex justify-between items-center">
           <span className="text-green-400 text-[18px] font-semibold">
             Order items
           </span>
-          <ImCross className="w-[20px] h-[20px] cursor-pointer text-green-400 text-[18px] font-semibold hover:text-gray-600" />
+          <ImCross
+            className="w-[20px] h-[20px] cursor-pointer text-green-400 text-[18px] font-semibold hover:text-gray-600"
+            onClick={() => setShowCart(false)}
+          />
         </header>
       </div>
     </div>
