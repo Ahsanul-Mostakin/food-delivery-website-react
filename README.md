@@ -1,7 +1,3 @@
-# food-delivery-website-react
-
-Food Delivery Website (React.js)
-
 # 🍔 Food Delivery Website (React.js)
 
 A responsive **Food Delivery Website** built with **React.js**.  
