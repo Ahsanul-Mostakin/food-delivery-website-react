@@ -70,7 +70,7 @@ const Home = () => {
           <span className="text-green-400 text-[18px] font-semibold">
             Order items
           </span>
-          <ImCross className="w-[20px] cursor-pointer text-green-400 text-[18px] font-semibold" />
+          <ImCross className="w-[20px] h-[20px] cursor-pointer text-green-400 text-[18px] font-semibold hover:text-gray-600" />
         </header>
       </div>
     </div>
