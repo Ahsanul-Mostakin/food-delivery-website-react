@@ -1,39 +1,60 @@
 # 🍔 Food Delivery Website (React.js)
 
-A responsive **Food Delivery Website** built with **React.js**.  
-Users can browse menus, filter dishes, add items to the cart, and experience a real-world food ordering flow.
+A modern and fully responsive **Food Delivery Website** built with **React.js**, allowing users to browse menus, search/filter dishes, manage a cart, and simulate a smooth food ordering flow.  
+
+🚀 **Live Demo**: [mostakin-food-delivery.netlify.app](https://mostakin-food-delivery.netlify.app/)
 
 ---
 
-## 🚀 Features
+## 📸 Screenshots
 
-- Home Page – Browse restaurants and dishes
-- Menu Page – Dynamic listings with images, details, and prices
-- Cart System – Add/remove items, adjust quantities, view total
-- Search & Filter – Find dishes quickly by category
-- Toastify Notifications – Feedback for user actions
-- Responsive Design – Optimized for mobile, tablet, and desktop
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/673fff98-7172-48c7-b137-2ab9ef19cd51" alt="Homepage Screenshot" width="600"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/95491034-5791-4016-baa5-81ef4fe7139c" alt="Menu Page Screenshot" width="600"/>
+</p>
+
+---
+
+## ✨ Features
+
+- **🏠 Home Page** – Browse restaurants and featured dishes  
+- **📋 Menu Page** – Dynamic listings with images, details, and prices  
+- **🛒 Cart System** – Add/remove items, adjust quantities, view total instantly  
+- **🔍 Search & Filter** – Quickly find dishes by category or name  
+- **🔔 Toast Notifications** – Feedback for actions (add/remove)  
+- **📱 Responsive Design** – Optimized for desktop, tablet, and mobile  
 
 ---
 
 ## 🛠️ Tech Stack
 
-- React.js, React Router
-- TailwindCSS
-- Redux Toolkit & React Hooks
+- **Frontend**: React.js, React Router, React Hooks  
+- **State Management**: Redux Toolkit  
+- **Styling**: TailwindCSS  
+- **Notifications**: React-Toastify  
+- **Deployment**: Netlify  
 
 ---
 
-## 📚 Learnings
+## 📚 Key Learnings
 
-- React component structure & routing
-- State management with Redux Toolkit/hooks
-- Building dynamic, reusable components
-- Integrating search, filter, cart, and notifications
-- Responsive UI design with TailwindCSS
-- Deployment on Netlify
+Through building this project, I practiced:
+
+- Structuring React components for scalability  
+- Managing global state with Redux Toolkit and React Hooks  
+- Creating reusable, dynamic UI components  
+- Implementing real-world features like search, filter, and cart systems  
+- Designing a responsive, mobile-first UI with TailwindCSS  
+- Deploying a React application on Netlify  
 
 ---
 
-Made with ❤️ by **Ahsanul Mostakin**  
-🎉 Happy Coding!
+## 🚀 Getting Started
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/your-username/food-delivery-website.git
+cd food-delivery-website
