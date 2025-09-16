@@ -5,6 +5,7 @@ import Card from "../components/Card";
 import { food_items } from "../food";
 import { dataContext } from "../context/UserContext";
 import { ImCross } from "react-icons/im";
+import Card2 from "../components/Card2";
 
 const Home = () => {
   let { input, cate, setCate, showCart, setShowCart } = useContext(dataContext);
@@ -78,6 +79,7 @@ const Home = () => {
             onClick={() => setShowCart(false)}
           />
         </header>
+        <Card2 />
       </div>
     </div>
   );
