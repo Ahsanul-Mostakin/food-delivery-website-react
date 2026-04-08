@@ -44,15 +44,16 @@ const Home = () => {
   let total = Math.floor(subtotal + deliveryFee + taxes);
 
   return (
-    <div className="bg-slate-200 w-full min-h-screen">
+    <div className="bg-orange-50 w-full min-h-screen">
       <Nav />
+
       {!input && (
-        <div className="flex flex-wrap justify-center items-center gap-5 w-[100%]">
+        <div className="flex flex-wrap justify-center items-center gap-5 w-full py-6 px-5">
           {Categories.map((item) => (
             <div
               key={item.id}
               onClick={() => filter(item.name)}
-              className="w-[140px] h-[150px] bg-white flex flex-col items-start gap-5 p-5 justify-start text-[20px] font-semibold text-gray-600 rounded-lg shadow-xl hover:bg-blue-200 cursor-pointer transition-all duration-200"
+              className="w-[140px] h-[150px] bg-white flex flex-col items-start gap-5 p-5 justify-start text-[20px] font-semibold text-gray-600 rounded-xl shadow-md hover:bg-orange-100 hover:text-orange-500 hover:shadow-lg cursor-pointer transition-all duration-200 border border-orange-100"
             >
               {item.icon}
               {item.name}
@@ -61,7 +62,7 @@ const Home = () => {
         </div>
       )}
 
-      <div className="w-full flex flex-wrap gap-5 px-5 justify-center items-center pt-8 pb-8">
+      <div className="w-full flex flex-wrap gap-5 px-5 justify-center items-center pt-4 pb-8">
         {cate.length > 0 ? (
           cate.map((item) => (
             <Card
@@ -74,29 +75,33 @@ const Home = () => {
             />
           ))
         ) : (
-          <div className="text-center text-2xl text-blue-500 font-semibold pt-5">
+          <div className="text-center text-2xl text-orange-400 font-semibold pt-5">
             No Dish Found
           </div>
         )}
       </div>
 
+      {/* Cart Sidebar */}
       <div
-        className={`w-full md:w-[40vw] h-full fixed top-0 right-0 bg-white shadow-xl p-6 transition-all duration-500 flex flex-col items-center overflow-auto ${
+        className={`w-full md:w-[40vw] h-full fixed top-0 right-0 bg-white shadow-2xl transition-all duration-500 flex flex-col items-center overflow-auto ${
           showCart ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <header className="w-full flex justify-between items-center">
-          <span className="text-blue-400 text-[18px] font-semibold">
-            Order items
+        {/* Cart Header */}
+        <header className="w-full flex justify-between items-center px-6 py-5 border-b border-orange-100 bg-orange-500">
+          <span className="text-white text-[18px] font-bold tracking-wide">
+            🛒 Your Order
           </span>
           <ImCross
-            className="w-[20px] h-[20px] cursor-pointer text-blue-400 text-[18px] font-semibold hover:text-gray-600"
+            className="w-[16px] h-[16px] cursor-pointer text-white hover:text-orange-200 transition-colors"
             onClick={() => setShowCart(false)}
           />
         </header>
+
         {items.length > 0 ? (
-          <>
-            <div className="w-full mt-9 flex flex-col gap-8">
+          <div className="w-full flex flex-col flex-1 px-6">
+            {/* Cart Items */}
+            <div className="w-full mt-5 flex flex-col gap-4">
               {items.map((item) => (
                 <Card2
                   key={item.id}
@@ -108,49 +113,50 @@ const Home = () => {
                 />
               ))}
             </div>
-            <div className="w-full border-t-2 border-gray-400 mt-7 flex flex-col gap-2 p-8"></div>
-            <div className="w-full flex justify-between items-center">
-              <span className="text-lg text-gray-600 font-semibold">
-                Subtotal
-              </span>
-              <span className="text-blue-400 font-semibold text-lg">
-                BDT {subtotal}/-
-              </span>
+
+            {/* Price Breakdown */}
+            <div className="w-full mt-6 rounded-xl bg-orange-50 border border-orange-100 p-5 flex flex-col gap-3">
+              <div className="w-full flex justify-between items-center">
+                <span className="text-base text-gray-500 font-medium">Subtotal</span>
+                <span className="text-orange-500 font-semibold text-base">
+                  BDT {subtotal}/-
+                </span>
+              </div>
+              <div className="w-full flex justify-between items-center">
+                <span className="text-base text-gray-500 font-medium">Delivery Fee</span>
+                <span className="text-orange-500 font-semibold text-base">
+                  BDT {deliveryFee}/-
+                </span>
+              </div>
+              <div className="w-full flex justify-between items-center">
+                <span className="text-base text-gray-500 font-medium">Taxes</span>
+                <span className="text-orange-500 font-semibold text-base">
+                  BDT {taxes}/-
+                </span>
+              </div>
+              <div className="w-full border-t border-orange-200 pt-3 flex justify-between items-center">
+                <span className="text-xl text-gray-700 font-bold">Total</span>
+                <span className="text-orange-500 font-bold text-xl">
+                  BDT {total}/-
+                </span>
+              </div>
             </div>
-            <div className="w-full flex justify-between items-center">
-              <span className="text-lg text-gray-600 font-semibold">
-                Delivery Fee
-              </span>
-              <span className="text-blue-400 font-semibold text-lg">
-                BDT {deliveryFee}/-
-              </span>
-            </div>
-            <div className="w-full flex justify-between items-center">
-              <span className="text-lg text-gray-600 font-semibold">Taxes</span>
-              <span className="text-blue-400 font-semibold text-lg">
-                BDT {taxes}/-
-              </span>
-            </div>
-            <div className="w-full flex justify-between items-center">
-              <span className="text-2xl text-gray-600 font-semibold">
-                Total
-              </span>
-              <span className="text-blue-400 font-semibold text-2xl">
-                BDT {total}/-
-              </span>
-            </div>
+
+            {/* Place Order Button */}
             <button
-              className="w-[80%] p-3 bg-blue-500 rounded-lg text-white hover:bg-blue-400 transition-all"
-              onClick={() => {
-                toast.info("Order Placed...");
-              }}
+              className="w-full mt-5 mb-6 p-4 bg-orange-500 rounded-xl text-white font-bold text-lg hover:bg-orange-400 active:scale-95 transition-all duration-150 shadow-md"
+              onClick={() => toast.info("Order Placed...")}
             >
-              Place Order
+              Place Order →
             </button>
-          </>
+          </div>
         ) : (
-          <div className="text-center text-2xl text-blue-500 font-semibold pt-5">
-            Empty Cart
+          <div className="flex flex-col items-center justify-center flex-1 gap-3 pb-20">
+            <span className="text-6xl">🛒</span>
+            <div className="text-center text-xl text-orange-400 font-semibold">
+              Your cart is empty
+            </div>
+            <p className="text-gray-400 text-sm">Add some delicious items!</p>
           </div>
         )}
       </div>

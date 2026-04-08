@@ -7,7 +7,7 @@ import { food_items } from "../food";
 import { useSelector } from "react-redux";
 
 function Nav() {
-  let { input, setInput, cate, setCate, showCart, setShowCart } =
+  let { input, setInput, setCate, setShowCart } =
     useContext(dataContext);
   let items = useSelector((state) => state.cart);
 
@@ -19,31 +19,31 @@ function Nav() {
   }, [input, setCate]);
 
   return (
-    <div className="w-full h-[100px] flex justify-between items-center px-5 md:px-8">
-      <div className="w-[60px] h-[60px] bg-white flex justify-center items-center rounded-md shadow-md">
-        <MdFastfood className="w-[30px] h-[30px] text-blue-500" />
+    <div className="w-full h-[80px] flex justify-between items-center px-5 md:px-8 bg-white shadow-sm border-b border-orange-100">
+      <div className="w-[55px] h-[55px] bg-orange-500 flex justify-center items-center rounded-xl shadow-md">
+        <MdFastfood className="w-[28px] h-[28px] text-white" />
       </div>
       <form
-        className="w-[45%] h-[60px] bg-white flex items-center px-5 gap-5 rounded-md shadow-xl md:w-[70%]"
+        className="w-[45%] h-[48px] bg-orange-50 border border-orange-200 flex items-center px-4 gap-3 rounded-xl md:w-[60%] focus-within:border-orange-400 focus-within:shadow-md transition-all"
         onSubmit={(e) => e.preventDefault()}
       >
-        <FaSearch className="text-blue-500 w-[20px] h-[20px]" />
+        <FaSearch className="text-orange-400 w-[16px] h-[16px] shrink-0" />
         <input
-          className="bg-white w-[100%] outline-none text-[16px] md:text-[20px]"
+          className="bg-transparent w-full outline-none text-[15px] md:text-[17px] text-gray-700 placeholder-gray-400"
           type="text"
-          placeholder="Search Items..."
+          placeholder="Search for food..."
           onChange={(e) => setInput(e.target.value)}
           value={input}
         />
       </form>
       <div
-        className="w-[60px] h-[60px] bg-white flex justify-center items-center rounded-md shadow-xl relative cursor-pointer"
+        className="w-[55px] h-[55px] bg-orange-500 flex justify-center items-center rounded-xl shadow-md relative cursor-pointer hover:bg-orange-400 transition-colors"
         onClick={() => setShowCart(true)}
       >
-        <span className="absolute top-0 right-2 text-blue-500 font-bold text-[18px]">
+        <span className="absolute -top-1 -right-1 bg-red-500 text-white font-bold text-[11px] w-5 h-5 flex items-center justify-center rounded-full shadow">
           {items.length}
         </span>
-        <LuShoppingBag className="w-[30px] h-[30px] text-blue-500" />
+        <LuShoppingBag className="w-[26px] h-[26px] text-white" />
       </div>
     </div>
   );
