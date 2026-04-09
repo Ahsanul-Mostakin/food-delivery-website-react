@@ -2,6 +2,9 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
+const generateToken = (userId) =>
+  jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: "7d" });
+
 // REGISTER
 export const register = async (req, res) => {
   try {
@@ -14,24 +17,22 @@ export const register = async (req, res) => {
     if (existingUser)
       return res.status(400).json({ message: "Email already registered!" });
 
-    const user = new User({ name, email, password });
-    await user.save();
+    // Hash password manually here — no pre-save hook needed
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+    const user = await User.create({
+      name,
+      email,
+      password: hashedPassword,
     });
 
-    res.status(201).json({
-      token,
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-      },
+    return res.status(201).json({
+      token: generateToken(user._id),
+      user: { _id: user._id, name: user.name, email: user.email },
     });
   } catch (err) {
-    console.error("Register error:", err);
-    res.status(500).json({ message: "Server error!" });
+    console.error("Register error:", err.message);
+    return res.status(500).json({ message: err.message || "Server error!" });
   }
 };
 
@@ -51,20 +52,12 @@ export const login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Invalid email or password!" });
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
-    });
-
-    res.status(200).json({
-      token,
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-      },
+    return res.status(200).json({
+      token: generateToken(user._id),
+      user: { _id: user._id, name: user.name, email: user.email },
     });
   } catch (err) {
-    console.error("Login error:", err);
-    res.status(500).json({ message: "Server error!" });
+    console.error("Login error:", err.message);
+    return res.status(500).json({ message: err.message || "Server error!" });
   }
 };
