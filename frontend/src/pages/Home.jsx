@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Card from "../components/Card";
 import Card2 from "../components/Card2";
-import { clearCart } from "../redux/cartSlice";
+import Categories from "../components/Category"; 
+import Nav from "../components/Nav";
 import { DataContext } from "../context/UserContext.jsx";
 import { ImCross } from "react-icons/im";
 import { food_items } from "../food";
-import Categories from "../category";
-import Nav from "../components/Nav";
+import { clearCart } from "../redux/cartSlice";
 
 const Home = () => {
   const { input, cate, setCate, showCart, setShowCart } = useContext(DataContext);
