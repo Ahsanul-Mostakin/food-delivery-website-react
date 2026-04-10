@@ -20,32 +20,25 @@ const Auth = () => {
     e.preventDefault();
     setLoading(true);
 
+    const BASE = import.meta.env.VITE_API;
+
     const url = isLogin
-      ? "http://localhost:5000/api/auth/login"
-      : "http://localhost:5000/api/auth/register";
+      ? `${BASE}/api/auth/login`
+      : `${BASE}/api/auth/register`;
 
     try {
       const res = await axios.post(url, form);
-      console.log("Full API Response:", res.data); // 👈 keep this for debugging
-
       const data = res.data;
 
-      // Extract token — check all common field names
       const token =
-        data.token ||
-        data.accessToken ||
-        data.access_token ||
-        data.jwt ||
-        null;
+        data.token || data.accessToken || data.access_token || data.jwt || null;
 
-      // Extract user object — check all common shapes
       const user =
         data.user ||
         data.data ||
         data.userData ||
         (data.name ? { name: data.name, email: data.email, _id: data._id || data.id } : null);
 
-      // If register and no token returned, do auto-login
       if (!token && !isLogin) {
         toast.success("Registered! Please login.");
         setIsLogin(true);
@@ -55,8 +48,7 @@ const Auth = () => {
       }
 
       if (!token) {
-        toast.error("No token received. Check console for response structure.");
-        console.error("Could not find token in:", data);
+        toast.error("No token received!");
         return;
       }
 

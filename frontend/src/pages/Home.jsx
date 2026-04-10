@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Card from "../components/Card";
 import Card2 from "../components/Card2";
-import Categories from "../components/Category"; 
+import Categories from "../components/Category";
 import Nav from "../components/Nav";
 import { DataContext } from "../context/UserContext.jsx";
 import { ImCross } from "react-icons/im";
@@ -43,7 +43,7 @@ const Home = () => {
     if (items.length === 0) return toast.error("Your cart is empty!");
 
     try {
-      const res = await fetch("http://localhost:5000/api/order/place", {
+      const res = await fetch(`${import.meta.env.VITE_API}/api/orders/place`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,6 @@ const Home = () => {
     <div className="bg-orange-50 w-full min-h-screen">
       <Nav />
 
-      {/* Categories */}
       {!input && (
         <div className="flex flex-wrap justify-center items-center gap-5 w-full py-6 px-5">
           {Categories.map((item) => (
@@ -84,7 +83,6 @@ const Home = () => {
         </div>
       )}
 
-      {/* Food Items */}
       <div className="w-full flex flex-wrap gap-5 px-5 justify-center items-center pt-4 pb-8">
         {cate.length > 0 ? (
           cate.map((item) => (
@@ -104,7 +102,6 @@ const Home = () => {
         )}
       </div>
 
-      {/* Cart Sidebar */}
       <div
         className={`w-full md:w-[40vw] h-full fixed top-0 right-0 bg-white shadow-2xl transition-all duration-500 flex flex-col items-center overflow-auto z-50 ${
           showCart ? "translate-x-0" : "translate-x-full"
@@ -172,7 +169,6 @@ const Home = () => {
         )}
       </div>
 
-      {/* Cart Overlay */}
       {showCart && (
         <div
           className="fixed inset-0 bg-black/30 z-40"
