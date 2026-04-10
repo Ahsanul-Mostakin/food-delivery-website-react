@@ -2,7 +2,7 @@
  
 A full-stack food delivery application built with the **MERN Stack**, featuring JWT authentication, real-time cart management, and order persistence.
  
-🌐 **Live Demo**: [foodzone-frontend-by98.onrender.com](https://foodzone-frontend-by98.onrender.com) &nbsp;|&nbsp; 🔧 **API**: [foodzone-backend-6005.onrender.com](https://foodzone-backend-6005.onrender.com)
+🌐 **Live Demo**: [https://mern-foodzone.onrender.com](https://mern-foodzone.onrender.com) &nbsp;|&nbsp; 🔧 **API**: [foodzone-backend-6005.onrender.com](https://foodzone-backend-6005.onrender.com)
  
 ---
  
